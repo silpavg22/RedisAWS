@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Silpa Vijayan Geetha(1001989441)</title>
+
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <!-- Fonts and icons -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="static/css/paper-dashboard.css?v=2.0.1" rel="stylesheet"/>
+    <!-- CSS -->
+    <link href="static/demo/demo.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+  form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+ .inputstyle {
+  margin-bottom:2%;
+  margin-top:3%;
+  margin-left:3%;
+}
+
+ .inputstyle1 {
+  margin-bottom:5%;
+  margin-top:5%;
+  width:25%;
+}
+
+.divstyle {
+  border: 1px solid black;
+  margin: 1rem;
+  align:center;
+}
+
+.div{
+max-width: 600px;
+border: 1px solid black;
+margin: auto;
+margin-bottom: 2%;
+}
+
+
+</style>
+
+<body>
+ <h3 align="center">Assignment 3</h3>
+ <h2 align="center">Silpa Vijayan Geetha(1001989441)</h2><br>
+<div>
+
+
+<!--    <div class="card" style="margin:auto;max-width:600px">-->
+<!--        <div class="card-body ">-->
+<!--            <form action="/upload" method="POST" enctype="multipart/form-data">-->
+<!--                <p class="card-text">Choose an image </p>-->
+<!--                <input type="file" name="file" value="file">-->
+<!--                <hr>-->
+<!--                <input type="submit" name="upload" value="Upload" class="btn btn-success">-->
+<!--            </form>-->
+<!--            {{msg}}-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <form class="finddata" action="/finddetails" method="POST" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                <b>1. Find Earthquakes within magnitude without Cache</b><br>
+                 Enter magnitude<input type="text"  name="magnitude" class="inputstyle"><br>
+                Enter no of iterations<input type="text"  name="itr1" class="inputstyle">
+
+                <button type="submit">Find</i></button>
+            </form>
+         {% if trand is defined%}
+        <div class="div">
+            <b>Output:</b> {{trand[0][0]}}</b> Earthquakes ( Retrieved in <b>{{t2}}</b>msec )
+        </div>
+         {%else%}
+            {{errormsg2}}
+        {% endif %}
+
+        {% if reslt1 is defined%}
+        <div class="div">
+            <b>Output:</b> {{reslt1[0]}}</b> Earthquakes ( Retrieved in <b>{{t1}}</b>msec )
+        </div>
+         {%else%}
+            {{errormsg1}}
+        {% endif %}
+
+     <div>
+        <form class="finddata" action="/findnetrows" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                <b>2. Find data with net value</b><br>
+                 Enter net value<input type="text"  name="netvalue" class="inputstyle"><br>
+                Enter no of iterations<input type="text"  name="itr12" class="inputstyle">
+
+                <button type="submit">Find</i></button>
+            </form>
+        {% if reslt12 is defined%}
+        <div class="div">
+            <b>Output:{{reslt12[0]}}</b> Earthquakes ( Retrieved in <b>{{t12}}</b>msec )
+        </div>
+         {%else%}
+            {{errormsg12}}
+        {% endif %}
+    </div>
+
+    <div>
+        <form class="finddata" action="/finddetailscache" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                <b>2. Find Earthquakes within magnitude with Cache</b><br>
+                 Enter magnitude<input type="text"  name="magnitude" class="inputstyle"><br>
+                Enter no of iterations<input type="text"  name="itr2" class="inputstyle">
+
+                <button type="submit">Find</i></button>
+            </form>
+        {% if reslt2 is defined%}
+        <div class="div">
+            <b>Output:</b> {{reslt2[0]}}</b> Earthquakes ( Retrieved in <b>{{t2}}</b>msec )
+        </div>
+         {%else%}
+            {{errormsg2}}
+        {% endif %}
+    </div>
+
+
+
+
+    <div>
+    <form class="finddata" action="/findquakewithin" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                 <b>3. Find Earthquake within distance without Cache</b><br>
+
+                 Enter longitude<input type="text"  name="longitude" class="inputstyle"><br>
+                 Enter latitude<input type="text"  name="latitude" class="inputstyle"><br>
+                 Enter distance in km<input type="text"  name="distance" class="inputstyle"><br>
+                 Enter no of iterations<input type="text" name="itr3" class="inputstyle"><br>
+
+
+                <button type="submit">Find</i></button>
+
+            </form>
+        </div>
+        {% if reslt3 is defined%}
+        <div class="div">
+            <b>Output:</b> {{reslt3}} </b> Earthquakes ( Retrieved in <b>{{t3}}</b>msec )
+        </div>
+            {%else%}
+        {{errormsg3}}
+        {% endif %}
+
+
+    <div>
+    <form class="finddata" action="/findquakewithincache" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                 <b>4. Find Earthquake within distance with Cache</b><br>
+
+                 Enter longitude<input type="text"  name="longitude" class="inputstyle"><br>
+                 Enter latitude<input type="text"  name="latitude" class="inputstyle"><br>
+                 Enter distance in km<input type="text"  name="distance" class="inputstyle"><br>
+                 Enter no of iterations<input type="text" name="itr4" class="inputstyle"><br>
+
+
+                <button type="submit">Find</i></button>
+
+            </form>
+        </div>
+       {% if reslt4 is defined%}
+        <div class="div">
+            <b>Output:</b> {{reslt4}} </b> Earthquakes ( Retrieved in <b>{{t4}}</b>msec )
+        </div>
+            {%else%}
+        {{errormsg4}}
+        {% endif %}
+        <div>
+        <form class="finddata" action="/getclosestmag" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+                <b>5. Find Closest Earthquake with Magnitude > 6 Last week</b><br>
+                 Enter longitude<input type="text"  name="longitude" class="inputstyle"><br>
+                 Enter latitude<input type="text" name="latitude" class="inputstyle"><br>
+                 Enter no of iterations<input type="text"  name="itr5" class="inputstyle"><br>
+
+                <button type="submit">Find</i></button>
+
+            </form>
+        </div>
+     {% if reslt5 is defined%}
+        <div  class="divstyle">
+            <b>Output</b>( Retrieved in <b>{{t5}}</b> msec )
+          <table id="data" class="table table-striped">
+               <thead>
+                    <th>Place</th>
+                   <th>Maginitude</th>
+                   <th>Time</th>
+               </thead>
+               <tbody>
+                    <td>{{reslt5[2]}}</td>
+                   <td>{{reslt5[3]}}</td>
+                   <td>{{reslt5[4]}}</td>
+               </tbody>
+           </table>
+        </div>
+            {%else%}
+        {{errormsg5}}
+        {% endif %}
+    <div>
+        <form class="findlargestquakelastweek" action="/findlargestquakelastweek" method="GET" enctype="multipart/form-data"
+                      style="margin:auto;max-width:600px">
+                      <b>6.Find Largest quake in last number of days inputted, within distance</b><br>
+
+                     Enter longitude<input type="text"  name="longitude1" class="inputstyle"><br>
+                     Enter latitude<input type="text"  name="latitude1" class="inputstyle"><br>
+                     Enter distance in km<input type="text"  name="distancelastweek" class="inputstyle"><br>
+                                 Enter no of days<input type="text"  name="nodays" class="inputstyle"><br>
+
+                     Enter no of iterations<input type="text"  name="itr6" class="inputstyle"><br>
+
+
+                    <button type="submit">Find </i></button>
+        </form>
+    </div>
+       {% if reslt6 is defined%}
+        <div class="div">
+            <b>Output:</b> {{reslt6[3]}} </b> ( Retrieved in <b>{{t6}}</b>msec )
+        </div>
+            {%else%}
+        {{errormsg6}}
+        {% endif %}
+   </div>
+   <div>
+    <form class="findNquakes" action="/findNquakes" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+         <b>7.Find Largest N quakes without Cache</b><br>
+                 Enter number of quakes<input type="text"  name="nooofquakes" class="inputstyle">
+                 Enter number of iterations<input type="text"  name="itr7" class="inputstyle">
+
+                <button type="submit">Find</i></button>
+            </form>
+    </div>
+     {% if reslt7 is defined%}
+  <div class="div">
+            <b>Output:</b> ( Retrieved in <b>{{t7}}</b>msec )
+        </div>
+<div  class="divstyle">
+            <table class="table table-striped">
+               <thead>
+                    <th>Place</th>
+                   <th>Maginitude</th>
+                   <th>Time</th>
+               </thead>
+               <tbody>
+                {% for item in reslt7%}
+                    <tr>
+                        <td>{{item[13]}}</td>
+                       <td>{{item[4]}}</td>
+                       <td>{{item[0]}}</td>
+                    </tr>
+                 {% endfor %}
+                 </tbody>
+           </table>
+        </div>
+  {%else%}
+        {{errormsg8}}
+        {% endif %}
+
+    <div>
+    <form class="findNquakescache" action="/findNquakescache" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+         <b>8.Find Largest N quakes With Cache</b><br>
+                 Enter number of quakes<input type="text"  name="nooofquakes" class="inputstyle">
+                 Enter number of iterations<input type="text"  name="itr8" class="inputstyle">
+
+                <button type="submit">Find</i></button>
+            </form>
+    </div>
+     {% if reslt8 is defined%}
+   <div class="div">
+            <b>Output:</b> ( Retrieved in <b>{{t8}}</b>msec )
+        </div>
+<div  class="divstyle">
+            <table class="table table-striped">
+               <thead>
+                    <th>Place</th>
+                   <th>Maginitude</th>
+                   <th>Time</th>
+               </thead>
+               <tbody>
+                {% for item in reslt8%}
+                    <tr>
+                        <td>{{item[13]}}</td>
+                       <td>{{item[4]}}</td>
+                       <td>{{item[0]}}</td>
+                    </tr>
+                 {% endfor %}
+                 </tbody>
+           </table>
+        </div>
+  {%else%}
+        {{errormsg8}}
+        {% endif %}
+
+<div>
+
+<div>
+    <form class="findquakesbtwfronandto" action="/findquakesbtwfronandto" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+        <b>9.Find Earthquakes between fromDate and toDate</b><br>
+                 From Date:<input type="date" id="from_date" name="from_date" class="inputstyle"
+        format="yyyy-mm-dd" placeholder="YYYY-MM_DD"><br>
+                 To Date:<input type="date" id="to_date" name="to_date" class="inputstyle"
+        format="yyyy-mm-dd" placeholder="YYYY-MM_DD"><br>
+                <button type="submit">Find</i></button>
+            </form>
+    </div>
+ {% if res is defined%}
+{% for item in res%}
+        <div  class="divstyle">
+            {{item}}
+        </div>
+ {% endfor %}
+        {% endif %}
+
+<div>
+    <form class="findquakesbtwmag" action="/findquakesbtwmag" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+        <b>10.Find Earthquakes between magnitude ranges</b><br>
+
+                 Earthquakes between magnitude:<input type="text" id="from_mag" name="from_mag" placeholder="Magnitude From" class="inputstyle1"> and
+                 <input type="text" id="to_mag" name="to_mag" placeholder="Magnitude To" class="inputstyle1"><br>
+                    Enter no of days:<input type="text" id="nodays" name="nodays" placeholder="No of Days" class="inputstyle1"><br>
+
+                <button type="submit">Find</i></button>
+            </form>
+    </div>
+ {% if magres is defined%}
+{% for item in magres%}
+        <div  class="divstyle">
+            {{item[13]}}
+        </div>
+ {% endfor %}
+        {% endif %}
+
+
+<div>
+    <form class="findquakesdayandnight" action="/findquakesdayandnight" method="GET" enctype="multipart/form-data"
+                  style="margin:auto;max-width:600px">
+        <b>11.Do large (>4.0 mag) occur more often at night?</b><br>
+                <button type="submit">Find</i></button>
+            </form>
+    </div>
+ {% if msgres is defined%}
+        <div  class="divstyle">
+            {{msgres}}
+        </div>
+        {% endif %}
+</div>
+</body>
+</html>
