@@ -21,7 +21,7 @@ r = redis.Redis(host="127.0.0.1", port=6379, decode_responses=True)
 # r = redis.Redis(host="redisaws.lbbznu.ng.0001.use2.cache.amazonaws.com", port=6379, db=0,socket_timeout=10,decode_responses=True)
 print(r)
 server = ""
-database = "projectDB"
+database = ""
 username = ""
 password = ""
 
